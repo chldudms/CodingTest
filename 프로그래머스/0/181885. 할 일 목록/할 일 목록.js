@@ -1,6 +1,6 @@
-function solution(todo_list, finished) {
+function solution(todo, finished) {
     var answer = [];
+   answer= todo.filter((a,index)=>finished[index]===false)
     
-  return todo_list.filter((v,i) => !finished[i]);
- 
+    return answer;
 }
