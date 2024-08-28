@@ -1,18 +1,8 @@
-function solution(wallpaper) {
-  const list = [];
-  for (let i = 0; i < wallpaper.length; i++) {
-    for (let j = 0; j < wallpaper[i].length; j++) {
-      if ("#" === wallpaper[i][j]) {
-        list.push([i, j]);
-      }
-    }
-  }
-
-  const xList = [];
-  list.forEach((v) => xList.push(v[0]));
-  const yList = [];
-  list.forEach((v) => yList.push(v[1]));
-
-  const res = [Math.min(...xList), Math.min(...yList), Math.max(...xList) + 1, Math.max(...yList) + 1];
-  return res;
+function solution(wp) {
+    const fx = wp.findIndex(row => row.includes("#"));
+    const lx = wp.length - 1 - wp.slice().reverse().findIndex(row => row.includes("#")) + 1;
+    const fy = Math.min(...wp.map(row => row.indexOf("#")).filter(idx => idx !== -1));
+    const ly = Math.max(...wp.map(row => row.lastIndexOf("#")).filter(idx => idx !== -1)) + 1;
+    
+    return [fx, fy, lx, ly];
 }
